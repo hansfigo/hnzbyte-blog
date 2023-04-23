@@ -1,0 +1,23 @@
+{
+  "name": "solar-star",
+  "author": "HansByte",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^3.1.1",
+    "@emotion/css": "^11.10.6",
+    "astro": "^2.3.0",
+    "styled-components": "^5.3.10",
+    "tailwindcss": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26"
+  }
+}

@@ -1,0 +1,14 @@
+---
+const footer = `flex justify-center items-center` 
+---
+
+<script>
+    const date = new Date().getFullYear().toString();
+    document.getElementById(
+        "footer"
+    ).innerHTML = `&copy${date} HnzBlog. All Right Reserved `;
+</script>
+
+<footer class={footer}>
+    <p id="footer"></p>
+</footer>
