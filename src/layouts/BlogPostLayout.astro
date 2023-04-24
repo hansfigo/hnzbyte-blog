@@ -1,0 +1,13 @@
+---
+import MainHead from "./MainHead.astro";
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <MainHead/>
+  </head>
+  <h1 class="text-4xl">{frontmatter.title}</h1>
+  <h2>Post author: {frontmatter.author}</h2>
+  <slot />
+</html>

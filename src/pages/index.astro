@@ -1,10 +1,13 @@
 ---
 import "../global.css";
 import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection, getEntryBySlug } from 'astro:content';
+const allBlogPosts = await getCollection('blog');
+
 ---
 
 <MainLayout title="Home">
-	<h1 class="text-4xl">Welcome to My Blog</h1>
+	<h1 class="text-4xl ">Welcome to My Blog</h1>
 	<div>
 		<h3>My card</h3>
 		<p>
@@ -14,4 +17,16 @@ import MainLayout from "../layouts/MainLayout.astro";
 			neque nam doloremque atque sequi.
 		</p>
 	</div>
+
+	<br><br>
+	<ul>
+
+		{allBlogPosts.map(blog => (
+			<a href={`/posts/${blog.slug}`}><li>{blog.data.title}</li></a>
+			))
+			
+		}
+		</ul>
+
+
 </MainLayout>
