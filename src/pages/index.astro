@@ -1,32 +1,28 @@
 ---
-import "../global.css";
+import { log } from "astro/dist/core/logger/core";
 import MainLayout from "../layouts/MainLayout.astro";
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { getCollection, } from 'astro:content';
 const allBlogPosts = await getCollection('blog');
+const blogQuerry =( await getCollection('blog')).filter(blog => blog.data.title.toLowerCase().includes('kill me'.toLocaleLowerCase().trim()));
+
+console.log(blogQuerry);
+
 
 ---
+<script>
+
+</script>
 
 <MainLayout title="Home">
-	<h1 class="text-4xl ">Welcome to My Blog</h1>
-	<div>
-		<h3>My card</h3>
+	<h1 class="text-5xl font-bold">Welcome to My Blog</h1>
+	<br>
 		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt,
-			delectus odio voluptate incidunt inventore, molestias possimus
-			deleniti totam distinctio, quibusdam eius! Sint quidem ab libero
-			neque nam doloremque atque sequi.
+			Hello i'm Figo. this is just my blog post where i share anything especially my hobby
 		</p>
-	</div>
-
-	<br><br>
-	<ul>
-
+		<br><br>
+		<h2>Recent Blog : </h2>
 		{allBlogPosts.map(blog => (
 			<a href={`/posts/${blog.slug}`}><li>{blog.data.title}</li></a>
 			))
-			
 		}
-		</ul>
-
-
 </MainLayout>

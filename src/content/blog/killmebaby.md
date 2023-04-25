@@ -2,43 +2,14 @@
 layout: ../../layouts/BlogPostLayout.astro
 title: Kill Me Baby Review
 author  : FigoMager
+publishDate : 2023-04-25
+authorContact : claudiofigo0303@gmail.com
 tags :  
   - Anime
   - Review
+image : https://media.tenor.com/CQorucEqd_cAAAAC/kill-me-baby.gif
 ---
 
-# KILL ME BAYBE
-
-Introduction:
-
-Start with a brief overview of the anime and its genre (comedy).
-Mention the main characters and their relationship (Yasuna and Sonya, a high school girl and an assassin).
-Plot:
-
-Explain the general premise of the anime (daily lives of Yasuna and Sonya).
-Highlight some of the main storylines or themes (e.g. Yasuna's attempts to befriend Sonya, Sonya's assassin skills being used in unexpected ways).
-Note any standout episodes or moments.
-Characters:
-
-Discuss the main characters in more detail (Yasuna, Sonya, and any other recurring characters).
-Describe their personalities and how they interact with each other.
-Mention any character development or growth throughout the series.
-Humor:
-
-Talk about the comedy aspect of the anime and what makes it funny.
-Give examples of some of the jokes or gags used in the series.
-Discuss whether the humor is consistent throughout the series or if it varies.
-Animation and Sound:
-
-Evaluate the animation style and quality.
-Discuss the soundtrack and any memorable music or sound effects.
-Note any standout visual or audio moments.
-Overall:
-
-Summarize your thoughts on the anime as a whole.
-Give a rating or recommendation based on your opinion.
-Mention any final thoughts or comments.
-Example review:
 
 "Kill Me Baby" is a hilarious anime that follows the daily lives of high school girl Yasuna and her assassin friend Sonya. The show's premise is simple, but the humor is anything but. From Yasuna's attempts to befriend Sonya to Sonya's assassin skills being used in unexpected ways, the anime never fails to deliver laughs.
 
