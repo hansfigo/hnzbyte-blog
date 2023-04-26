@@ -50,6 +50,8 @@ const { title } = Astro.props;
 		<div class="flex flex-col justify-between h-screen">
 			<!-- <NavbarSvelte client:only/> -->
 			<!-- <Navbar /> -->
+			<div class="absolute z-[-10] inset-0 bg-[url(../public/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+
 			<nav
 				id="nav"
 				class="navbar fixed z-10 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
@@ -60,14 +62,14 @@ const { title } = Astro.props;
 					>
 				</div>
 				<div class="flex-none">
-					<ul class="menu items-center menu-horizontal px-1">
-						<li><a href="/">Home</a></li>
-						<li><a href="/about">About Me</a></li>
+					<ul class="menu items-center menu-horizontal ">
+						<li><a class="px-3 md:px-6" href="/">Home</a></li>
+						<li><a class="px-3 md:px-6" href="/about">About Me</a></li>
 						<input
 							id="btn"
 							type="checkbox"
-							class="toggle"
-							checked
+							class="toggle toggle-accent mr-4 "
+							
 						/>
 					</ul>
 				</div>
