@@ -4,30 +4,32 @@ const { frontmatter } = Astro.props;
 ---
 
 <MainLayout title={frontmatter.title}>
-  <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
-  <div class="avatar items-center gap-2">
-    <div class="w-8 rounded-full">
-      <img
-        src="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
-        width="455"
-        height="429"
-        alt="Ika Musume Pfp"
-      />
-    </div>
+  <div>
+    <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
+    <div class="avatar items-center gap-2">
+      <div class="w-8 rounded-full">
+        <img
+          src="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
+          width="455"
+          height="429"
+          alt="Ika Musume Pfp"
+        />
+      </div>
       <h2 class="font-semibold">{frontmatter.author}</h2>
-      <br>
+      <br />
       <p class="text-sm">{frontmatter.publishDate}</p>
+    </div>
+    <h2>Tags :</h2>
+    <div class="flex gap-4 py-2">
+      {
+        frontmatter.tags.map((e: string) => (
+          <div class="badge badge-accent">{e}</div>
+        ))
+      }
+    </div>
+    {frontmatter.image && <img src={frontmatter.image} alt="" />}
   </div>
-  <h2>Tags : </h2>
-  <div class="flex gap-4 py-2">
-    {
-      frontmatter.tags.map((e: string) => (
-        <div class="badge badge-accent">{e}</div>
-      ))
-    }
+  <div class="md:prose-lg prose prose-slate">
+    <slot />
   </div>
-  {frontmatter.image && <img src={frontmatter.image} alt="" />}
-
-
-  <slot />
 </MainLayout>
