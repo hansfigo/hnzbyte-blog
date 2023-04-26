@@ -1,12 +1,5 @@
-<script>
+<script lang="ts">
     import { themeData } from "../themeStore";
-
-    const toggle = document.getElementById("toggle");
-
-    toggle!.addEventListener("click", () => {
-        themeData.set(false);
-        console.log(themeData);
-    });
 
     const nav = document.getElementById("nav");
     let oldValue = 0;
@@ -36,7 +29,7 @@
         <ul class="menu items-center menu-horizontal px-1">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Me</a></li>
-            <input id="toggle" type="checkbox" class="toggle" checked />
+            <input on:toggle={()=> themeData.set(!$themeData)} type="checkbox" class="toggle" checked />
         </ul>
     </div>
 </nav>

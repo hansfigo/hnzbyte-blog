@@ -11,11 +11,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^2.1.0",
     "@astrojs/tailwind": "^3.1.1",
     "@emotion/css": "^11.10.6",
-    "astro": "^2.3.0",
+    "astro": "^2.3.1",
     "daisyui": "^2.51.6",
+    "nanostores": "^0.8.0",
     "styled-components": "^5.3.10",
+    "svelte": "^3.58.0",
     "tailwindcss": "^3.3.1"
   },
   "devDependencies": {
