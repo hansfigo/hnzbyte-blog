@@ -1,26 +1,35 @@
 ---
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
+const date = frontmatter.publishDate;
+const dateString = date.toString();
+const publishDate = dateString.substring(0, 10);
 ---
 
 <MainLayout title={frontmatter.title}>
-  <div>
-    <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
-    <div class="avatar items-center gap-2">
-      <div class="w-8 rounded-full">
-        <img
-          src="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
-          width="455"
-          height="429"
-          alt="Ika Musume Pfp"
-        />
+  <div class="flex-col flex gap-4">
+    <a href="/about">
+      <div class="flex gap-3">
+        <div class="avatar items-center gap-2">
+          <div class="w-12 rounded-full">
+            <img
+              src="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
+              width="455"
+              height="429"
+              alt="Hans Figo blog the blog author avatar"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <h2 class="text-lg font-semibold">{frontmatter.author}</h2>
+          <p class="text-sm">{publishDate}</p>
+        </div>
       </div>
-      <h2 class="font-semibold">{frontmatter.author}</h2>
-      <br />
-      <p class="text-sm">{frontmatter.publishDate}</p>
-    </div>
-    <h2>Tags :</h2>
-    <div class="flex gap-4 py-2">
+    </a>
+
+    <h1 class="text-5xl font-extrabold">{frontmatter.title}</h1>
+
+    <div class="flex gap-2 py-2">
       {
         frontmatter.tags.map((e: string) => (
           <div class="badge badge-accent">{e}</div>
@@ -28,8 +37,8 @@ const { frontmatter } = Astro.props;
       }
     </div>
     {frontmatter.image && <img src={frontmatter.image} alt="" />}
-  </div>
-  <div class="md:prose-lg prose prose-slate">
-    <slot />
+    <div class="lg:prose-xl prose prose-slate">
+      <slot />
+    </div>
   </div>
 </MainLayout>

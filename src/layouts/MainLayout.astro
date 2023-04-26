@@ -5,14 +5,44 @@ import MainHead from "./MainHead.astro";
 const { title } = Astro.props;
 ---
 
+<script>
+	// function runOnce() {
+	// 	let executed = false;
+	// 	return function () {
+	// 		if (!executed) {
+	// 			console.log('onii');
+	// 			executed = true;
+	// 			let screen = document.getElementById("screen");
+	// 			setTimeout(() => {
+	// 				let size = window!.innerWidth;
+	// 				screen!.classList.add("left-[2000px]");
+	// 				screen!.classList.remove("left-0");
+	// 			}, 1000);
+	// 		}
+	// 	};
+	// }
+
+	// const screen = runOnce();
+
+	// screen();
+</script>
+
 <html data-theme="cupcake" lang="en">
 	<head>
 		<MainHead title={title} />
 	</head>
 	<body class="">
 		<div class="flex flex-col justify-between h-screen">
+			<!-- <div
+				id="screen"
+				class="flex items-center h-screen w-screen left-0 absolute z-20 justify-center bg-base-100 transition-all duration-500 ease-in"
+			>
+				<h2>Hans blog</h2>
+			</div> -->
 			<Navbar />
-			<section class="relative w-full px-6 py-12 bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-3xl md:mx-auto lg:max-w-4xl lg:pt-16 lg:pb-28">
+			<section
+				class="mt-12 md:mb-12 flex-1 md:mt-32 relative w-full px-6 py-12 bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-3xl md:mx-auto md:px-16"
+			>
 				<slot />
 			</section>
 			<Footer />

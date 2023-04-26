@@ -1,11 +1,39 @@
-<div class="navbar bg-base-100">
+<script>
+    console.log("navbar");
+
+    const nav = document.getElementById("nav");
+    let oldValue = 0;
+
+    onscroll = (event) => {
+        let newValue = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (oldValue - newValue < 0) {
+            nav!.classList.add("top-[-4rem]");
+        } else if (oldValue - newValue > 0) {
+            setTimeout(()=>{nav!.classList.remove("top-[-4rem]");}, 100 )
+            
+        }
+        oldValue = newValue;
+    };
+</script>
+
+<style>
+    .bezier{
+        transition-timing-function: cubic-bezier(.17,.67,.44,.92);
+    }
+</style>
+
+<nav
+    id="nav"
+    class="navbar fixed z-10 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
+>
     <div class="flex-1">
-      <a href="/" class="btn btn-ghost normal-case text-xl">HnzBlog</a>
+        <a href="/" class="btn btn-ghost normal-case text-xl">HnzBlog</a>
     </div>
     <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Me</a></li>
-      </ul>
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Me</a></li>
+        </ul>
     </div>
-  </div>
+</nav>

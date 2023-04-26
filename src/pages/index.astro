@@ -1,28 +1,119 @@
 ---
 import { log } from "astro/dist/core/logger/core";
 import MainLayout from "../layouts/MainLayout.astro";
-import { getCollection, } from 'astro:content';
-const allBlogPosts = await getCollection('blog');
-const blogQuerry =( await getCollection('blog')).filter(blog => blog.data.title.toLowerCase().includes('kill me'.toLocaleLowerCase().trim()));
+import { getCollection } from "astro:content";
+const allBlogPosts = await getCollection("blog");
 
-console.log(blogQuerry);
+// FILTER USER SEARCH
+// const blogQuerry = (await getCollection("blog")).filter((blog) =>
+// 	blog.data.title.toLowerCase().includes("kill me".toLocaleLowerCase().trim())
+// );
 
+const url = "https://api.api-ninjas.com/v1/quotes?category=humor";
+const key = "NJGnmVbogrfsmUBmOwyg+w==srEeLsFz8InKCqoB";
 
+interface quotes {
+	quote: string;
+	author: string;
+}
+
+// const fetchQuotes : quotes[] = await fetch(url, {
+// 	method: "GET",
+// 	headers: {
+// 		"X-Api-Key": key,
+// 	},
+// }).then((e) => e.json());
 ---
-<script>
 
-</script>
+<script></script>
 
 <MainLayout title="Home">
-	<h1 class="text-5xl font-bold">Welcome to My Blog</h1>
-	<br>
-		<p>
-			Hello i'm Figo. this is just my blog post where i share anything especially my hobby
-		</p>
-		<br><br>
-		<h2>Recent Blog : </h2>
-		{allBlogPosts.map(blog => (
-			<a href={`/posts/${blog.slug}`}><li>{blog.data.title}</li></a>
-			))
-		}
+	<article class="flex flex-col gap-24">
+		<section class="flex flex-col gap-4">
+			<h1 class="text-5xl font-extrabold">Welcome to My Blog</h1>
+			<p class="text-gray-700 text-xl">
+				Hello this is just my blog web where i share anything especially
+				my hobby. You already know me i'm sucks at writing so dont
+				expect much. I'm still learning tho so hopefully my writting improve in future. Well enjoy your stay
+			</p>
+			<img class="rounded-lg" src="https://media.giphy.com/media/3ov9jIYPU7NMT6TS7K/giphy.gif" alt="Welcome page gif">
+
+		</section>
+		<section>
+			<h2 class="mb-8 text-xl font-semibold">Quotes of the Day</h2>
+			<figure class="max-w-screen-md mx-auto text-center bg-gray-50 px-2 py-8 rounded-sm">
+				<svg
+					aria-hidden="true"
+					class="w-5 h-5 mx-auto mb-3 text-gray-600 dark:text-gray-600"
+					viewBox="0 0 24 27"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"
+						fill="currentColor"></path></svg
+				>
+				<blockquote>
+					<p
+						class="text-lg italic font-medium text-gray-700 dark:text-white"
+					>
+						"My legacy would be that you don't have to give up
+						anything. You can be chic but have a sense of humor, you
+						can be sexy but comfortable, you can be timeless but
+						fresh."
+					</p>
+				</blockquote>
+				<figcaption
+					class="flex items-center justify-center mt-6 space-x-3"
+				>
+					<img
+						class="w-6 h-6 rounded-full"
+						src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+						alt="profile picture"
+					/>
+					<div
+						class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700"
+					>
+						<cite
+							class="pr-3 font-medium text-gray-900 dark:text-white"
+							>Figo Mager</cite
+						>
+
+						<!-- <cite class="pr-3 font-medium text-gray-900 dark:text-white">{fetchQuotes[0].author}</cite> -->
+					</div>
+				</figcaption>
+			</figure>
+		</section>
+
+		<section>
+			<h2 class="text-xl font-semibold">Recent Blog</h2>
+			<br />
+			<div class="flex flex-wrap gap-4">
+				{
+					allBlogPosts.map((blog) => (
+						<>
+							<a href={`/posts/${blog.slug}`}>
+								<div class="card card-compact w-72 h-72 bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+									<figure class="min-h-44">
+										<img
+											src={blog.data.image}
+											alt="Shoes"
+										/>
+									</figure>
+									<div class="card-body">
+										<h2 class="card-title">
+											{blog.data.title}
+										</h2>
+										<p>
+											If a dog chews shoes whose shoes
+											does he choose?
+										</p>
+									</div>
+								</div>
+							</a>
+						</>
+					))
+				}
+			</div>
+		</section>
+	</article>
 </MainLayout>

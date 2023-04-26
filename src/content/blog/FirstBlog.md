@@ -8,6 +8,5 @@ tags :
   - Random
 image : https://media.giphy.com/media/1O2BRZcDgIfDsKMTbG/giphy.gif
 ---
-# Hello its my First Blog
-
-I like Astro Js
+# Please dont boo me, i know i'm not a pro
+Omg i just realized my writing skills is so sucks after i make a blog. Well my mind is not responding right now so i stop it right here. Lets hope later i get struct by some inspiration so i can finish it > <
