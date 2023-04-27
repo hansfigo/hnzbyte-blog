@@ -1,5 +1,9 @@
 {
     "tailwindCSS.experimental.classRegex": [
         "`([^`]*)"
-    ]
+    ],
+    "terminal.integrated.automationProfile.linux": {
+
+    },
+    "terminal.integrated.fontFamily": "Courier New"
 }
