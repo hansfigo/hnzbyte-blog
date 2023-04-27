@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import NavbarSvelte from "../components/NavbarSvelte.svelte";
+import WaifuCard from "../components/WaifuCard.astro";
 import MainHead from "./MainHead.astro";
 const { title } = Astro.props;
 ---
@@ -10,8 +11,6 @@ const { title } = Astro.props;
 	import { themeData } from "../themeStore";
 	const htmlElement = document.querySelector("html");
 	let isDark = false;
-
-	console.log("theme:", themeData);
 
 	const btn = document.getElementById("btn");
 
@@ -26,10 +25,12 @@ const { title } = Astro.props;
 	});
 
 	const nav = document.getElementById("nav");
+	const body = document.getElementById("content");
 	let oldValue = 0;
 
-	onscroll = (event) => {
-		let newValue = window.pageYOffset || document.documentElement.scrollTop;
+	body!.addEventListener("scroll", function () {
+		let newValue = body!.scrollTop;
+		console.log(newValue);
 
 		if (oldValue - newValue < 0) {
 			nav!.classList.add("top-[-4rem]");
@@ -39,7 +40,7 @@ const { title } = Astro.props;
 			}, 100);
 		}
 		oldValue = newValue;
-	};
+	});
 </script>
 
 <html class="bg-base-200" data-theme="corporate" lang="en">
@@ -47,39 +48,50 @@ const { title } = Astro.props;
 		<MainHead title={title} />
 	</head>
 	<body class="">
-		<div class="flex flex-col justify-between h-screen">
-			<!-- <NavbarSvelte client:only/> -->
-			<!-- <Navbar /> -->
-			<div class="absolute z-[-10] inset-0 bg-[url(/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-
-			<nav
-				id="nav"
-				class="navbar fixed z-10 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
+		<div class="">
+			<div
+				class="fixed z-[-10] inset-0 bg-[url(/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
 			>
-				<div class="flex-1">
-					<a href="/" class="btn btn-ghost text-primary normal-case font-black text-2xl"
-						>HnzBlog</a
-					>
-				</div>
-				<div class="flex-none">
-					<ul class="menu items-center menu-horizontal ">
-						<li><a class="px-3 md:px-6" href="/">Home</a></li>
-						<li><a class="px-3 md:px-6" href="/about">About Me</a></li>
-						<input
-							id="btn"
-							type="checkbox"
-							class="toggle toggle-accent mr-4 "
-							
-						/>
-					</ul>
-				</div>
-			</nav>
+			</div>
 			<section
-				class="mt-12 md:mb-12 flex-1 md:mt-32 relative w-full px-6 py-12 bg-base-100 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-3xl md:mx-auto md:px-16"
+				id="content"
+				class="flex flex-col justify-between h-screen overflow-x-hidden"
 			>
-				<slot />
+				<nav
+					id="nav"
+					class="navbar fixed z-30 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
+				>
+					<div class="flex-1">
+						<a
+							href="/"
+							class="btn btn-ghost text-primary normal-case font-black text-2xl"
+							>HnzBlog</a
+						>
+					</div>
+					<div class="flex-none">
+						<ul class="menu items-center menu-horizontal">
+							<li><a class="px-3 md:px-6" href="/">Home</a></li>
+							<li>
+								<a class="px-3 md:px-6" href="/about"
+									>About Me</a
+								>
+							</li>
+							<input
+								id="btn"
+								type="checkbox"
+								class="toggle toggle-accent mr-4"
+							/>
+						</ul>
+					</div>
+				</nav>
+				<section
+					class="mt-12 md:mb-12 flex-1 md:mt-32 relative w-full px-6 py-12 bg-base-100 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-2xl lf:max-w-3xl md:mx-auto md:px-16"
+				>
+					<WaifuCard />
+					<slot />
+				</section>
+				<Footer />
 			</section>
-			<Footer />
 		</div>
 	</body>
 </html>

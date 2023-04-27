@@ -1,0 +1,32 @@
+---
+const url = "https://api.waifu.im/search/?included_tags=oppai";
+
+const fetchImage = await fetch(url).then((e) => e.json());
+---
+
+<style>
+    .parent-card:hover .child-parent {
+        top: -18px;
+        transition: all 300ms ease-in-out;
+        opacity: 1;
+        transform: rotate(12deg);
+        right: -260px;
+    }
+</style>
+
+<section class="hidden lg:block parent-card transition-all duration-300 ease-in-out">
+    <!-- <h2
+        class="child-parent absolute text-xl space-y-5 right-[-240px] top-12 opacity-0 transition-all duration-300 ease-in-out font-black"
+    >
+        Random Anime <br /> Photos
+    </h2> -->
+    <section
+        class="hover:rotate-12 transition-all duration-300 ease-in-out top-0 max-w-[240px] right-[-260px] translate-y-14 overflow-hidden px-6 pt-6 pb-20 rounded-md absolute z-10 bg-slate-100 shadow-md"
+    >
+        <img
+            src={fetchImage.images[0].url}
+            alt="Random Anime Image"
+            class="w-full rounded-md"
+        />
+    </section>
+</section>
