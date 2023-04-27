@@ -12,14 +12,23 @@ const { title } = Astro.props;
 	const htmlElement = document.querySelector("html");
 	let isDark = false;
 
+	if (localStorage.getItem("isDark") == null) {
+		htmlElement!.setAttribute("data-theme", "corporate");
+	} else{
+		htmlElement!.setAttribute("data-theme", localStorage.getItem("isDark")!);
+	}
+
 	const btn = document.getElementById("btn");
+
 
 	btn!.addEventListener("click", () => {
 		isDark = !isDark;
 
 		if (isDark) {
+			localStorage.setItem("isDark", "dracula")
 			htmlElement!.setAttribute("data-theme", "dracula");
 		} else {
+			localStorage.setItem("isDark", "corporate")
 			htmlElement!.setAttribute("data-theme", "corporate");
 		}
 	});
@@ -30,7 +39,6 @@ const { title } = Astro.props;
 
 	body!.addEventListener("scroll", function () {
 		let newValue = body!.scrollTop;
-		console.log(newValue);
 
 		if (oldValue - newValue < 0) {
 			nav!.classList.add("top-[-4rem]");
@@ -43,7 +51,7 @@ const { title } = Astro.props;
 	});
 </script>
 
-<html class="bg-base-200" data-theme="corporate" lang="en">
+<html class="bg-base-200" data-theme="" lang="en">
 	<head>
 		<MainHead title={title} />
 	</head>
