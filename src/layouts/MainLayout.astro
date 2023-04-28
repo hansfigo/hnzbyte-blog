@@ -1,33 +1,45 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
+import NavbarSvelte from "../components/NavbarSvelte.svelte";
 import WaifuCard from "../components/WaifuCard.astro";
 import MainHead from "./MainHead.astro";
-const { title } = Astro.props;
+const { title, isIndex } = Astro.props;
 ---
 
 <script>
 	import { themeData } from "../themeStore";
 	const htmlElement = document.querySelector("html");
-	let isDark = false;
+	let isDark: boolean;
 
 	if (localStorage.getItem("isDark") == null) {
+		isDark = false;
 		htmlElement!.setAttribute("data-theme", "corporate");
-	} else{
-		htmlElement!.setAttribute("data-theme", localStorage.getItem("isDark")!);
+	} else {
+		if (localStorage.getItem("isDark")! == "dracula") {
+			isDark = true;
+		} else {
+			isDark = false;
+		}
+		htmlElement!.setAttribute(
+			"data-theme",
+			localStorage.getItem("isDark")!
+		);
 	}
 
 	const btn = document.getElementById("btn");
 
-
 	btn!.addEventListener("click", () => {
+		console.log(isDark);
 		isDark = !isDark;
 
 		if (isDark) {
-			localStorage.setItem("isDark", "dracula")
+			console.log("dark");
+			localStorage.setItem("isDark", "dracula");
 			htmlElement!.setAttribute("data-theme", "dracula");
 		} else {
-			localStorage.setItem("isDark", "corporate")
+			console.log("Light");
+			localStorage.setItem("isDark", "corporate");
 			htmlElement!.setAttribute("data-theme", "corporate");
 		}
 	});
@@ -48,6 +60,10 @@ const { title } = Astro.props;
 		}
 		oldValue = newValue;
 	});
+
+	if (localStorage.getItem("isDark") == "dracula") {
+		btn!.checked = true;
+	}
 </script>
 
 <html class="bg-base-200" data-theme="" lang="en">
@@ -60,41 +76,68 @@ const { title } = Astro.props;
 				class="fixed z-[-10] inset-0 bg-[url(/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
 			>
 			</div>
+
 			<section
 				id="content"
 				class="flex flex-col justify-between h-screen overflow-x-hidden"
 			>
-				<nav
-					id="nav"
-					class="navbar fixed z-30 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
-				>
-					<div class="flex-1">
-						<a
-							href="/"
-							class="btn btn-ghost text-primary normal-case font-black text-2xl"
-							>HnzBlog</a
-						>
-					</div>
-					<div class="flex-none">
-						<ul class="menu items-center menu-horizontal">
-							<li><a class="px-3 md:px-6" href="/">Home</a></li>
-							<li>
-								<a class="px-3 md:px-6" href="/about"
-									>About Me</a
-								>
-							</li>
-							<input
-								id="btn"
-								type="checkbox"
-								class="toggle toggle-accent mr-4"
-							/>
-						</ul>
-					</div>
-				</nav>
+				<Navbar />
 				<section
-					class="mt-12 md:mb-12 flex-1 md:mt-32 relative w-full px-6 py-12 bg-base-100 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-2xl lf:max-w-3xl md:mx-auto md:px-16"
+					class="mt-12 md:mb-12 flex-1 md:mt-32 relative w-full px-6 py-12 bg-base-100 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-2xl lg:max-w-3xl md:mx-auto md:px-16"
 				>
-					<WaifuCard />
+					{isIndex ? <WaifuCard /> : <p />}
+					<div
+						class="absolute h-28 w-28 hidden md:block text-primary top-[-50px] left-[-40px]"
+					>
+						<svg
+							class="fill-accent"
+							version="1.1"
+							id="Capa_1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 0 448 448"
+							xml:space="preserve"
+						>
+							<g>
+								<path
+									d="M374.19,29.174c-3.904-3.905-10.234-3.905-14.143,0L50.409,338.809c-2.7,2.7-6.29,4.187-10.108,4.187
+                           c-3.819,0-7.408-1.487-10.108-4.188c-2.7-2.7-4.188-6.29-4.188-10.108c0-3.819,1.487-7.409,4.188-10.109
+                           c2.628-2.628,9.851-6.098,16.836-9.452c12.632-6.068,28.353-13.62,40.652-25.918c9.941-9.941,11.755-18.764,13.213-25.853
+                           c1.198-5.828,2.064-10.039,7.766-15.739c5.702-5.702,9.913-6.568,15.741-7.767c7.09-1.458,15.913-3.273,25.856-13.215
+                           c9.942-9.942,11.757-18.765,13.215-25.855c1.198-5.828,2.064-10.039,7.767-15.741c5.703-5.703,9.914-6.569,15.743-7.768
+                           c7.089-1.459,15.913-3.273,25.855-13.216c9.942-9.942,11.757-18.765,13.215-25.855c1.199-5.829,2.065-10.04,7.768-15.742
+                           c5.704-5.704,9.916-6.57,15.745-7.77c7.09-1.459,15.913-3.274,25.856-13.217c8.022-8.022,11.107-17.965,14.37-28.49
+                           c4.472-14.418,9.54-30.76,28.704-49.923c3.905-3.905,3.905-10.237,0-14.143c-3.906-3.905-10.236-3.905-14.142,0
+                           c-22.659,22.659-29.02,43.167-33.663,58.141c-2.836,9.141-4.884,15.746-9.411,20.273c-5.703,5.704-9.915,6.57-15.744,7.77
+                           c-7.09,1.458-15.914,3.274-25.857,13.217c-9.942,9.942-11.757,18.765-13.215,25.855c-1.199,5.828-2.065,10.04-7.768,15.742
+                           c-5.702,5.703-9.914,6.569-15.742,7.768c-7.09,1.458-15.913,3.273-25.857,13.215c-9.942,9.942-11.757,18.766-13.215,25.855
+                           c-1.198,5.828-2.064,10.039-7.767,15.742c-5.702,5.702-9.913,6.568-15.741,7.767c-7.09,1.458-15.913,3.272-25.855,13.214
+                           c-9.941,9.941-11.755,18.765-13.213,25.854c-1.198,5.828-2.064,10.038-7.766,15.74c-9.888,9.888-23.319,16.339-35.17,22.031
+                           c-9.271,4.454-17.279,8.3-22.318,13.338c-6.478,6.478-10.045,15.09-10.045,24.251c0,9.161,3.567,17.773,10.045,24.25
+                           c6.477,6.478,15.09,10.045,24.251,10.045c9.16,0,17.773-3.567,24.251-10.045L374.19,43.316
+                           C378.095,39.411,378.095,33.079,374.19,29.174z"
+								></path>
+								<path
+									d="M431.95,86.935c-6.478-6.478-15.09-10.045-24.251-10.045c-9.16,0-17.772,3.567-24.251,10.045
+                           c-5.038,5.039-8.884,13.045-13.338,22.317c-5.692,11.851-12.144,25.282-22.032,35.17c-5.701,5.701-9.911,6.567-15.739,7.765
+                           c-7.089,1.458-15.912,3.271-25.854,13.213c-9.942,9.942-11.757,18.766-13.215,25.855c-1.198,5.828-2.064,10.039-7.767,15.741
+                           c-5.702,5.702-9.913,6.568-15.741,7.767c-7.09,1.458-15.913,3.272-25.856,13.215s-11.758,18.766-13.216,25.855
+                           c-1.199,5.829-2.065,10.04-7.769,15.743c-5.702,5.702-9.913,6.568-15.742,7.767c-7.089,1.458-15.912,3.273-25.854,13.215
+                           c-9.943,9.944-11.759,18.767-13.217,25.857c-1.199,5.829-2.066,10.041-7.771,15.745c-4.526,4.527-11.131,6.575-20.272,9.41
+                           c-14.974,4.644-35.481,11.004-58.142,33.664c-3.905,3.905-3.905,10.237,0,14.142c3.905,3.906,10.235,3.906,14.143,0.001
+                           c19.164-19.164,35.506-24.232,49.924-28.704c10.525-3.265,20.467-6.348,28.49-14.37c9.943-9.943,11.759-18.767,13.217-25.857
+                           c1.2-5.829,2.066-10.041,7.771-15.745c5.702-5.703,9.913-6.568,15.741-7.767c7.09-1.458,15.913-3.273,25.855-13.215
+                           c9.942-9.942,11.758-18.766,13.216-25.855c1.199-5.829,2.065-10.04,7.768-15.743c5.702-5.702,9.913-6.568,15.741-7.767
+                           c7.09-1.458,15.913-3.273,25.855-13.214c9.942-9.942,11.757-18.766,13.215-25.855c1.198-5.828,2.064-10.039,7.767-15.741
+                           c5.701-5.701,9.911-6.567,15.739-7.765c7.089-1.458,15.912-3.271,25.853-13.213c12.299-12.299,19.85-28.021,25.918-40.654
+                           c3.355-6.984,6.824-14.206,9.452-16.834c2.7-2.7,6.29-4.187,10.108-4.187c3.819,0,7.409,1.487,10.108,4.187
+                           c2.7,2.7,4.188,6.29,4.188,10.108c0,3.818-1.487,7.408-4.188,10.108L108.17,430.929c-3.905,3.905-3.905,10.237,0,14.143
+                           c1.953,1.953,4.512,2.929,7.071,2.929c2.56,0,5.118-0.976,7.071-2.929L431.95,135.436c6.477-6.478,10.045-15.09,10.045-24.251
+                           C441.995,102.025,438.428,93.412,431.95,86.935z"
+								></path>
+							</g>
+						</svg>
+					</div>
 					<slot />
 				</section>
 				<Footer />

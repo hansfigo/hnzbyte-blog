@@ -1,5 +1,4 @@
 ---
-import { log } from "astro/dist/core/logger/core";
 import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 const allBlogPosts = await getCollection("blog");
@@ -25,26 +24,55 @@ interface quotes {
 // }).then((e) => e.json());
 ---
 
-<script></script>
+<script>
+	const quotes = document.getElementById("quotes");
 
-<MainLayout title="Home">
+	const childElements = quotes!.querySelectorAll(".text-secondary");
+
+	quotes!.addEventListener("mouseover", (event) => {
+		childElements.forEach((child) => {
+			console.log(child);
+			child.classList.remove("text-secondary");
+			child.classList.add("text-accent");
+		});
+	});
+
+	quotes!.addEventListener("mouseout", (event) => {
+		childElements.forEach((child) => {
+			child.classList.remove("text-accent");
+			child.classList.add("text-secondary");
+		});
+	});
+</script>
+
+<MainLayout title="Home" isIndex={true}>
 	<article class="flex flex-col gap-24">
 		<section class="flex flex-col gap-4">
-			<h1 class="text-5xl text-primary font-extrabold mb-4">Welcome to <span class="text-accent"> My Blog</span></h1>
+			<h1 class="text-2xl text-primary font-extrabold mb-4">
+				Welcome to <span class="text-accent text-md"> My Blog</span>
+			</h1>
 			<p class="text-base md:text-xl">
 				Hello this is just my blog web where i share anything especially
 				my hobby. You already know me i'm sucks at writing so dont
-				expect much. I'm still learning tho so hopefully my writting improve in future. Well enjoy your stay
+				expect much. I'm still learning tho so hopefully my writting
+				improve in future. Well enjoy your stay
 			</p>
-			<img class="rounded-lg" src="https://media.tumblr.com/daafc916a337ad6c0780d46cb98e3b0c/tumblr_inline_mvle8f3UR01qear04.gif" alt="Welcome page gif">
-
+			<img
+				class="rounded-lg"
+				src="https://media.tumblr.com/daafc916a337ad6c0780d46cb98e3b0c/tumblr_inline_mvle8f3UR01qear04.gif"
+				alt="Welcome page gif"
+			/>
 		</section>
-		<section>
-			<h2 class="mb-8 text-xl font-semibold text-primary ">Quotes of the Day</h2>
-			<figure class="max-w-screen-md mx-auto text-center bg-base-100 px-2 py-8 rounded-sm">
+		<section id="quotes">
+			<h2 class="mb-8 text-xl font-semibold text-primary">
+				Quotes of the Day
+			</h2>
+			<figure
+				class="max-w-screen-md mx-auto text-center bg-base-100 px-2 py-8 rounded-sm"
+			>
 				<svg
 					aria-hidden="true"
-					class="w-5 h-5 mx-auto mb-3 text-secondary-focus"
+					class="w-5 h-5 mx-auto mb-3 text-secondary duration-300 ease-in-out"
 					viewBox="0 0 24 27"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -53,9 +81,7 @@ interface quotes {
 						fill="currentColor"></path></svg
 				>
 				<blockquote>
-					<p
-						class="text-lg italic font-medium  text-secondary"
-					>
+					<p class="text-lg italic font-medium text-secondary transition-all duration-300 ease-in-out">
 						"My legacy would be that you don't have to give up
 						anything. You can be chic but have a sense of humor, you
 						can be sexy but comfortable, you can be timeless but
@@ -65,12 +91,8 @@ interface quotes {
 				<figcaption
 					class="flex items-center justify-center mt-6 space-x-3"
 				>
-					
-					<div
-						class="flex items-center divide-x-2"
-					>
-						<cite
-							class="pr-3 text-secondary-focus	font-semibold"
+					<div class="flex items-center divide-x-2">
+						<cite class="pr-3 text-secondary font-semibold duration-300 ease-in-out"
 							>Figo Mager</cite
 						>
 
@@ -81,7 +103,7 @@ interface quotes {
 		</section>
 
 		<section>
-			<h2 class="text-xl font-semibold text-primary ">Recent Blog</h2>
+			<h2 class="text-xl font-semibold text-primary">Recent Blog</h2>
 			<br />
 			<div class="flex flex-wrap gap-4">
 				{

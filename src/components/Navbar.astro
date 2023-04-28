@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import { themeData } from "../themeStore";
 
     const toggle = document.getElementById("toggle");
@@ -23,20 +23,26 @@
         }
         oldValue = newValue;
     };
-</script>
+</script> -->
 
 <nav
     id="nav"
-    class="navbar fixed z-10 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
+    class="navbar fixed z-30 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
 >
     <div class="flex-1">
-        <a href="/" class="btn btn-ghost normal-case text-xl">HnzBlog</a>
+        <a
+            href="/"
+            class="btn btn-ghost text-primary normal-case font-black text-2xl"
+            >HnzBlog</a
+        >
     </div>
     <div class="flex-none">
-        <ul class="menu items-center menu-horizontal px-1">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About Me</a></li>
-            <input id="toggle" type="checkbox" class="toggle" checked />
+        <ul class="menu items-center menu-horizontal">
+            <li><a class="px-3 md:px-6" href="/">Home</a></li>
+            <li>
+                <a class="px-3 md:px-6" href="/about">About Me</a>
+            </li>
+            <input id="btn" type="checkbox" class="toggle toggle-accent mr-4" />
         </ul>
     </div>
 </nav>
