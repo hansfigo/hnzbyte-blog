@@ -6,7 +6,7 @@ import MainHead from "./MainHead.astro";
 const { title, isIndex } = Astro.props;
 ---
 
-<!-- <script is:inline>
+<script is:inline>
 	const htmlElement = document.querySelector("html");
 	let isDark;
 
@@ -27,8 +27,8 @@ const { title, isIndex } = Astro.props;
 	} else {
 		htmlElement.setAttribute("class", "bg-base-300");
 	}
-</script> -->
-<!-- 
+</script>
+
 <script>
 	const htmlElement = document.querySelector("html");
 
@@ -51,10 +51,7 @@ const { title, isIndex } = Astro.props;
 			}
 		});
 	});
-</script>
 
-<script>
-	const htmlElement = document.querySelector("html");
 	let isDark: boolean;
 
 	if (localStorage.getItem("isDark") == null) {
@@ -72,23 +69,7 @@ const { title, isIndex } = Astro.props;
 		);
 	}
 
-	const btn = document.getElementById("btn");
-
-	btn!.addEventListener("click", () => {
-		console.log(isDark);
-		isDark = !isDark;
-
-		if (isDark) {
-			console.log("dark");
-			localStorage.setItem("isDark", "dracula");
-			htmlElement!.setAttribute("data-theme", "dracula");
-		} else {
-			console.log("Light");
-			localStorage.setItem("isDark", "corporate");
-			htmlElement!.setAttribute("data-theme", "corporate");
-		}
-	});
-</script> -->
+</script>
 
 
 
