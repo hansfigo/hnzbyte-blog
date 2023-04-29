@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: Astro Introduction
-description : You wanna build good SEO and performance for you website? you should check it out Astro
+title: Introducing Astro – Your All-in-One Solution for Website Optimization
+description : Have you been searching for a simple and effective way to optimize your website's SEO and performance? Look no further than Astro. 
 author  : FigoMager
 publishDate : 2023-04-25
 authorContact : claudiofigo0303@gmail.com

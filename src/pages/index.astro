@@ -63,11 +63,13 @@ const allBlogPosts = await getCollection("blog");
 				expect much. I'm still learning tho so hopefully my writting
 				improve in future. Well enjoy your stay
 			</p>
-			<img
-				class="rounded-lg"
-				src="https://media.tumblr.com/daafc916a337ad6c0780d46cb98e3b0c/tumblr_inline_mvle8f3UR01qear04.gif"
-				alt="Welcome page gif"
-			/>
+			<div class="overflow-hidden h-full w-full rounded-lg">
+				<img
+					class=" hover:scale-110 h-full w-full  duration-300 ease-in-out transition-all"
+					src="https://media.tumblr.com/daafc916a337ad6c0780d46cb98e3b0c/tumblr_inline_mvle8f3UR01qear04.gif"
+					alt="Welcome page gif"
+				/>
+			</div>
 		</section>
 		<section id="quotes">
 			<h2 class="mb-8 text-xl font-semibold text-primary">
@@ -113,23 +115,48 @@ const allBlogPosts = await getCollection("blog");
 				{
 					allBlogPosts.map((blog) => (
 						<>
-							<a href={`/posts/${blog.slug}`}>
-								<div class="card card-compact w-72 h-72 bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
-									<figure class="min-h-44">
-										<img
-											src={blog.data.image}
-											alt="Shoes"
-										/>
-									</figure>
-									<div class="card-body">
-										<h2 class="card-title">
-											{blog.data.title}
-										</h2>
-										<p>{blog.data.description}</p>
+							<div class="card sm:card-side bg-base-100 shadow-xl">
+								<figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
+									<img
+										class="h-full"
+										src={blog.data.image}
+										alt="Movie"
+									/>
+								</figure>
+								<div class="card-body">
+									<h2 class="card-title">
+										{blog.data.title}
+									</h2>
+									<p>{blog.data.description}</p>
+									<div class="card-actions justify-end">
+										<a href={`/posts/${blog.slug}`}>
+											<button class="btn btn-primary">
+												Read
+											</button>
+										</a>
 									</div>
 								</div>
-							</a>
+							</div>
 						</>
+						// <>
+
+						// 	<a href={`/posts/${blog.slug}`}>
+						// 		<div class="card card-compact w-72 h-72 bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+						// 			<figure class="min-h-44">
+						// 				<img
+						// 					src={blog.data.image}
+						// 					alt="Shoes"
+						// 				/>
+						// 			</figure>
+						// 			<div class="card-body">
+						// 				<h2 class="card-title">
+						// 					{blog.data.title}
+						// 				</h2>
+						// 				<p>{blog.data.description}</p>
+						// 			</div>
+						// 		</div>
+						// 	</a>
+						// </>
 					))
 				}
 			</div>
