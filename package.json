@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "tailwind-scrollbar": "^3.0.0"
   }
 }

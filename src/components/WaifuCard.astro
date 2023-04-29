@@ -28,13 +28,14 @@
         const fetchImage = await fetch(url).then((e) => e.json());
 
         img!.src = fetchImage.images[0].url;
-        cardTitle!.innerHTML = `Random Waifu #${fetchImage.images[0].image_id}`;
 
         btn!.classList.add("loading");
         btn!.setAttribute("disabled", "disabled");
 
         cardImg!.onload = () => {
             const tags = fetchImage.images[0].tags;
+            cardTitle!.innerHTML = `Random Waifu #${fetchImage.images[0].image_id}`;
+
 
             let tagList: string = "";
 
