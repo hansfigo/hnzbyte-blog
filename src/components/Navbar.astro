@@ -1,30 +1,3 @@
-<!-- <script>
-    import { themeData } from "../themeStore";
-
-    const toggle = document.getElementById("toggle");
-
-    toggle!.addEventListener("click", () => {
-        themeData.set(false);
-        console.log(themeData);
-    });
-
-    const nav = document.getElementById("nav");
-    let oldValue = 0;
-
-    onscroll = (event) => {
-        let newValue = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (oldValue - newValue < 0) {
-            nav!.classList.add("top-[-4rem]");
-        } else if (oldValue - newValue > 0) {
-            setTimeout(() => {
-                nav!.classList.remove("top-[-4rem]");
-            }, 100);
-        }
-        oldValue = newValue;
-    };
-</script> -->
-
 <nav
     id="nav"
     class="navbar fixed z-30 top-0 shadow-sm transition-all duration-300 bezier bg-base-100"
@@ -42,7 +15,24 @@
             <li>
                 <a class="px-3 md:px-6" href="/about">About Me</a>
             </li>
-            <input id="btn" type="checkbox" class="toggle toggle-accent mr-4" />
+            <div class="dropdown  dropdown-hover dropdown-end">
+                <label tabindex="0" class="btn m-1">Theme</label>
+                <ul
+                id="themeList"
+                    tabindex="0"
+                    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                    <li><a>Corporate</a></li>
+                    <li><a>Synthwave</a></li>
+                    <li><a>Dracula</a></li>
+                    <li><a>Emerald</a></li>
+                    <li><a>Aqua</a></li>
+                    <li><a>Acid</a></li>
+                    <li><a>Night</a></li>
+                    <li><a>Cyberpunk</a></li>
+                    <li><a>Valentine</a></li>
+                </ul>
+            </div>
         </ul>
     </div>
 </nav>

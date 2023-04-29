@@ -1,34 +1,61 @@
 <script>
-    const url = "https://api.waifu.im/search/?included_tags=selfies";
+    import { HtmlTag } from "svelte/internal";
+
+    const url = "https://api.waifu.im/search/?included_tags=oppai";
     const fetchImage = await fetch(url).then((e) => e.json());
 
     const img = document.getElementById("anime") as HTMLImageElement;
     const cardImg = document.getElementById("anime");
-    const progress = document.getElementById("progress");
+    const btn = document.getElementById("waifuBtn");
+    const tag = document.getElementById("tag");
+    const cardTitle = document.getElementById("card-title");
 
     img!.src = fetchImage.images[0].url;
+    cardTitle!.innerHTML = `Random Waifu #${fetchImage.images[0].image_id}`;
 
-    cardImg!.addEventListener("click", async () => {
-        progress!.classList.remove("hidden");
-        progress!.classList.add("block");
+    const tags = fetchImage.images[0].tags;
 
+    let tagList: string = "";
+
+    tags.map((e: any) => {
+        console.log(e.name);
+        tagList += ` <div class="badge badge-secondary">${e.name}</div>`;
+    });
+
+    tag!.innerHTML = tagList;
+
+    btn!.addEventListener("click", async () => {
         const fetchImage = await fetch(url).then((e) => e.json());
-        img!.src = fetchImage.images[0].url;
 
-        setTimeout(() => {
-            progress!.classList.remove("block");
-            progress!.classList.add("hidden");
-        }, 1000);
+        img!.src = fetchImage.images[0].url;
+        cardTitle!.innerHTML = `Random Waifu #${fetchImage.images[0].image_id}`;
+
+        btn!.classList.add("loading");
+        btn!.setAttribute("disabled", "disabled");
+
+        cardImg!.onload = () => {
+            const tags = fetchImage.images[0].tags;
+
+            let tagList: string = "";
+
+            tags.map((e: any) => {
+                console.log(e.name);
+                tagList += ` <div class="badge badge-secondary">${e.name}</div>`;
+            });
+
+            tag!.innerHTML = tagList;
+            btn!.classList.remove("loading");
+            btn!.removeAttribute("disabled");
+        };
     });
 </script>
 
 <style>
     .parent-card:hover .child-parent {
-        @apply
-        translate-y-[-50px]
+        @apply translate-y-[-50px]
         /* top: 0px;
         transition: all 300ms ease-in-out;
-        opacity: 1; */
+        opacity: 1; */;
     }
 </style>
 
@@ -40,18 +67,26 @@
     >
         Random Anime <br /> Photos
     </h2> -->
-    <section class="top-0 max-w-[240px] right-[-260px] translate-y-14 absolute z-10">
+    <section
+        class="top-0 max-w-[240px] right-[-260px] translate-y-14 absolute z-10"
+    >
         <section
-            class="hover:rotate-12 hover:cursor-pointer relative z-10 transition-all duration-300 ease-in-out overflow-hidden px-6 pt-6 pb-20 rounded-md  bg-slate-100 shadow-md"
+            class="h-full hover:rotate-12 pb-8 relative z-10 transition-all duration-300 ease-in-out overflow-hidden px-6 pt-6 rounded-md bg-neutral-content shadow-md"
         >
-            <img
-                id="anime"
-                alt="Random Anime Image"
-                class="w-full rounded-md"
-            />
-            <progress
-                id="progress"
-                class="progress progress-primary hidden mt-4"></progress>
+            <div class="flex gap-4 h-full flex-col justify-between">
+                <img
+                    id="anime"
+                    alt="Random Anime Image"
+                    class="w-full rounded-md"
+                />
+                <p id="card-title" class="font-bold">Rand Waifu</p>
+
+                <div id="tag" class="flex gap-2 flex-wrap"></div>
+
+                <div class="flex justify-end">
+                    <button id="waifuBtn" class="btn btn-primary">Next</button>
+                </div>
+            </div>
         </section>
         <!-- <h2 class="child-parent z-0  translate-y-[0px] transition-all duration-300 ease-out absolute font-bold text-lg">Waifu Card</h2> -->
     </section>

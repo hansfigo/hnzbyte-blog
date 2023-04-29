@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: Kill Me Baby Review
+description : Light, Simple but Hilarious anime? Well you're in Right place.
 author  : FigoMager
 publishDate : 2023-04-25
 authorContact : claudiofigo0303@gmail.com

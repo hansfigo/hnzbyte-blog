@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: My First Blog
+description : Me? Writing Blog? haha let's see how it goes
 author  : FigoMager
 publishDate : 2023-04-25
 authorContact : claudiofigo0303@gmail.com

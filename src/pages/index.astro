@@ -7,21 +7,6 @@ const allBlogPosts = await getCollection("blog");
 // const blogQuerry = (await getCollection("blog")).filter((blog) =>
 // 	blog.data.title.toLowerCase().includes("kill me".toLocaleLowerCase().trim())
 // );
-
-const url = "https://api.api-ninjas.com/v1/quotes?category=humor";
-const key = "NJGnmVbogrfsmUBmOwyg+w==srEeLsFz8InKCqoB";
-
-interface quotes {
-	quote: string;
-	author: string;
-}
-
-// const fetchQuotes : quotes[] = await fetch(url, {
-// 	method: "GET",
-// 	headers: {
-// 		"X-Api-Key": key,
-// 	},
-// }).then((e) => e.json());
 ---
 
 <script>
@@ -43,6 +28,27 @@ interface quotes {
 			child.classList.add("text-secondary");
 		});
 	});
+
+	const url = "https://api.api-ninjas.com/v1/quotes?category=humor";
+	const key = "NJGnmVbogrfsmUBmOwyg+w==srEeLsFz8InKCqoB";
+
+	interface quotes {
+		quote: string;
+		author: string;
+	}
+
+	const quotesElement = document.getElementById("quoteText");
+	const authorElement = document.getElementById("author");
+
+	const fetchQuotes: quotes[] = await fetch(url, {
+		method: "GET",
+		headers: {
+			"X-Api-Key": key,
+		},
+	}).then((e) => e.json());
+
+	quotesElement!.innerHTML = fetchQuotes[0].quote;
+	authorElement!.innerHTML = fetchQuotes[0].author;
 </script>
 
 <MainLayout title="Home" isIndex={true}>
@@ -81,22 +87,20 @@ interface quotes {
 						fill="currentColor"></path></svg
 				>
 				<blockquote>
-					<p class="text-lg italic font-medium text-secondary transition-all duration-300 ease-in-out">
-						"My legacy would be that you don't have to give up
-						anything. You can be chic but have a sense of humor, you
-						can be sexy but comfortable, you can be timeless but
-						fresh."
+					<p
+						id="quoteText"
+						class="text-lg italic font-medium text-secondary transition-all duration-300 ease-in-out"
+					>
 					</p>
 				</blockquote>
 				<figcaption
 					class="flex items-center justify-center mt-6 space-x-3"
 				>
 					<div class="flex items-center divide-x-2">
-						<cite class="pr-3 text-secondary font-semibold duration-300 ease-in-out"
-							>Figo Mager</cite
-						>
-
-						<!-- <cite class="pr-3 font-medium text-gray-900 dark:text-white">{fetchQuotes[0].author}</cite> -->
+						<cite
+							id="author"
+							class="pr-3 text-secondary font-semibold duration-300 ease-in-out"
+						></cite>
 					</div>
 				</figcaption>
 			</figure>
@@ -121,10 +125,7 @@ interface quotes {
 										<h2 class="card-title">
 											{blog.data.title}
 										</h2>
-										<p>
-											If a dog chews shoes whose shoes
-											does he choose?
-										</p>
+										<p>{blog.data.description}</p>
 									</div>
 								</div>
 							</a>

@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: Astro Introduction
+description : You wanna build good SEO and performance for you website? you should check it out Astro
 author  : FigoMager
 publishDate : 2023-04-25
 authorContact : claudiofigo0303@gmail.com

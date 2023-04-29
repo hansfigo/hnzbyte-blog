@@ -19,12 +19,38 @@ const { title, isIndex } = Astro.props;
 		} else {
 			isDark = false;
 		}
-		htmlElement.setAttribute(
-			"data-theme",
-			localStorage.getItem("isDark")
-		);
+		htmlElement.setAttribute("data-theme", localStorage.getItem("isDark"));
 	}
-	
+
+	if (localStorage.getItem("isDark") == "corporate") {
+		htmlElement.setAttribute("class", "bg-base-200");
+	} else {
+		htmlElement.setAttribute("class", "bg-base-300");
+	}
+</script>
+
+<script>
+	const htmlElement = document.querySelector("html");
+
+	const dropdownItems = document.querySelectorAll(".dropdown-content a");
+
+	dropdownItems.forEach((item) => {
+		item.addEventListener("click", (e) => {
+			const theme = (e.target as HTMLElement).textContent!.toLowerCase();
+
+			localStorage.setItem("isDark", theme);
+			htmlElement!.setAttribute("data-theme", theme);
+			if (theme === "corporate") {
+				htmlElement!.setAttribute("class", "bg-base-200");
+			} else if (theme === "emerald") {
+				htmlElement!.setAttribute("class", "bg-base-200");
+			} else if (theme === "acid") {
+				htmlElement!.setAttribute("class", "bg-base-200");
+			} else {
+				htmlElement!.setAttribute("class", "bg-base-300");
+			}
+		});
+	});
 </script>
 
 <script>
@@ -62,8 +88,6 @@ const { title, isIndex } = Astro.props;
 			htmlElement!.setAttribute("data-theme", "corporate");
 		}
 	});
-
-
 </script>
 
 <script>
@@ -85,7 +109,7 @@ const { title, isIndex } = Astro.props;
 	});
 </script>
 
-<html class="bg-base-200" data-theme="" lang="en">
+<html id="html" class="bg-base-300" data-theme="" lang="en">
 	<head>
 		<MainHead title={title} />
 	</head>
