@@ -1,14 +1,33 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import NavbarSvelte from "../components/NavbarSvelte.svelte";
 import WaifuCard from "../components/WaifuCard.astro";
 import MainHead from "./MainHead.astro";
 const { title, isIndex } = Astro.props;
 ---
 
+<script is:inline>
+	const htmlElement = document.querySelector("html");
+	let isDark;
+
+	if (localStorage.getItem("isDark") == null) {
+		isDark = false;
+		htmlElement.setAttribute("data-theme", "corporate");
+	} else {
+		if (localStorage.getItem("isDark") == "dracula") {
+			isDark = true;
+		} else {
+			isDark = false;
+		}
+		htmlElement.setAttribute(
+			"data-theme",
+			localStorage.getItem("isDark")
+		);
+	}
+	
+</script>
+
 <script>
-	import { themeData } from "../themeStore";
 	const htmlElement = document.querySelector("html");
 	let isDark: boolean;
 
@@ -44,6 +63,10 @@ const { title, isIndex } = Astro.props;
 		}
 	});
 
+
+</script>
+
+<script>
 	const nav = document.getElementById("nav");
 	const body = document.getElementById("content");
 	let oldValue = 0;
@@ -60,10 +83,6 @@ const { title, isIndex } = Astro.props;
 		}
 		oldValue = newValue;
 	});
-
-	if (localStorage.getItem("isDark") == "dracula") {
-		btn!.checked = true;
-	}
 </script>
 
 <html class="bg-base-200" data-theme="" lang="en">
