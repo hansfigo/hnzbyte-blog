@@ -32,7 +32,7 @@ const { title, isIndex } = Astro.props;
 <script>
 	const htmlElement = document.querySelector("html");
 
-	const dropdownItems = document.querySelectorAll(".dropdown-content a");
+	const dropdownItems = document.querySelectorAll(".dropdown-content li");
 
 	dropdownItems.forEach((item) => {
 		item.addEventListener("click", (e) => {
