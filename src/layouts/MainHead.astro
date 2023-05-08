@@ -1,5 +1,10 @@
 ---
 const { title } = Astro.props
+const { desc } = Astro.props
+const {img} = Astro.props
+
+const url = Astro.request.url 
+console.log(url);
 ---
 
 <meta charset="utf-8" />
@@ -8,4 +13,12 @@ const { title } = Astro.props
 <meta name="generator" content={Astro.generator} />
 <script src="https://kit.fontawesome.com/ce5c00bedb.js" crossorigin="anonymous"></script>
 <script defer src="/_vercel/insights/script.js"></script>
+
+
+<meta property="og:title" content={title}/>
+<meta property="og:type" content="article" />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={img}/>
+
+<meta name="description" content={desc}>
 <title>{title}</title>

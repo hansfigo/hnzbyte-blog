@@ -2,6 +2,10 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 const allBlogPosts = await getCollection("blog");
+import { useStoryblokApi } from "@storyblok/astro";
+import BlogPostList from "../storyblok/BlogPostList.astro";
+
+console.log();
 
 // FILTER USER SEARCH
 // const blogQuerry = (await getCollection("blog")).filter((blog) =>
@@ -52,26 +56,9 @@ const allBlogPosts = await getCollection("blog");
 	authorElement!.innerHTML = fetchQuotes[0].author;
 </script>
 
-<MainLayout title="Home" isIndex={true}>
+<MainLayout title="Home" isIndex={true} desc="Blog nya si Figo" img="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg">
 	<article class="flex flex-col gap-24">
 		<section class="flex flex-col gap-4">
-			<!-- <div id="sfcyxesl29xraaelubgj9h37pjahgbg8t42"></div><script
-				type="text/javascript"
-				src="https://counter2.optistats.ovh/private/counter.js?c=yxesl29xraaelubgj9h37pjahgbg8t42&down=async"
-				async
-			></script><noscript
-				><a
-					class="min-h-16 min-w-[200px]"
-					href="https://www.freecounterstat.com"
-					title="website hit counter"
-					><img
-					class="h-full w-full"
-						src="https://counter2.optistats.ovh/private/freecounterstat.php?c=yxesl29xraaelubgj9h37pjahgbg8t42"
-						title="website hit counter"
-						alt="website hit counter"
-					/></a
-				></noscript
-			> -->
 			<h1 class="text-2xl text-primary font-extrabold mb-4">
 				Welcome to <span class="text-accent text-md"> My Blog</span>
 			</h1>
@@ -130,53 +117,7 @@ const allBlogPosts = await getCollection("blog");
 			<h2 class="text-xl font-semibold text-primary">Recent Blog</h2>
 			<br />
 			<div class="flex flex-wrap gap-4">
-				{
-					allBlogPosts.map((blog) => (
-						<>
-							<div class="card sm:card-side bg-base-100 shadow-xl">
-								<figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
-									<img
-										class="h-full"
-										src={blog.data.image}
-										alt="Movie"
-									/>
-								</figure>
-								<div class="card-body">
-									<h2 class="card-title">
-										{blog.data.title}
-									</h2>
-									<p>{blog.data.description}</p>
-									<div class="card-actions justify-end">
-										<a href={`/posts/${blog.slug}`}>
-											<button class="btn btn-primary">
-												Read
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</>
-						// <>
-
-						// 	<a href={`/posts/${blog.slug}`}>
-						// 		<div class="card card-compact w-72 h-72 bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
-						// 			<figure class="min-h-44">
-						// 				<img
-						// 					src={blog.data.image}
-						// 					alt="Shoes"
-						// 				/>
-						// 			</figure>
-						// 			<div class="card-body">
-						// 				<h2 class="card-title">
-						// 					{blog.data.title}
-						// 				</h2>
-						// 				<p>{blog.data.description}</p>
-						// 			</div>
-						// 		</div>
-						// 	</a>
-						// </>
-					))
-				}
+				<BlogPostList />
 			</div>
 		</section>
 	</article>

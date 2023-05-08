@@ -1,0 +1,46 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { useStoryblokApi } from "@storyblok/astro";
+
+const storyblokAPI = useStoryblokApi();
+
+const { data } = await storyblokAPI.get("cdn/stories", {
+    content_type: "blogPost",
+});
+
+const posts = data.stories.map((story: any) => {
+    return {
+        title: story.content.title,
+        date: new Date(story.published_at).toLocaleDateString("en-US", {
+            dateStyle: "full",
+        }),
+        description: story.content.description,
+        slug: story.full_slug,
+        image : story.content.banner.cached_url
+    };
+});
+
+console.log(posts);
+
+---
+
+<>
+    {
+        posts.map((post: any) => (
+            <div class="card sm:card-side bg-base-100 shadow-xl">
+                <figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
+                    <img class="h-full" src={post.image} alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{post.title}</h2>
+                    <p>{post.description}</p>
+                    <div class="card-actions justify-end">
+                        <a href={`/blog/${post.slug}`}>
+                            <button class="btn btn-primary">Read</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+</>
