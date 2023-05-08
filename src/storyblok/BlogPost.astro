@@ -4,17 +4,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const { blok } = Astro.props;
 
-
-console.log(blok.content);
 const content = renderRichText(blok.content)
-
-
-console.log("BLOKKKK",content);
-
 
 ---
 
-<MainLayout title={blok.title} desc={blok.description} img={blok.image.url}>
+<MainLayout title={blok.title} desc={blok.description} img={blok.banner.url}>
     <article {...storyblokEditable(blok)}>
         <div class="flex-col flex gap-4">
             <a href="/about">
