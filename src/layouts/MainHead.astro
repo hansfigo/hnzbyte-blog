@@ -1,9 +1,9 @@
 ---
-const { title } = Astro.props
-const { desc } = Astro.props
-const {img} = Astro.props
+const { title } = Astro.props;
+const { desc } = Astro.props;
+const { img } = Astro.props;
 
-const url = Astro.request.url 
+const url = Astro.request.url;
 console.log(url);
 ---
 
@@ -11,14 +11,25 @@ console.log(url);
 <link rel="icon" type="image/svg+xml" href="/h-logo.svg" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
-<script src="https://kit.fontawesome.com/ce5c00bedb.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ce5c00bedb.js" crossorigin="anonymous"
+></script>
 <script defer src="/_vercel/insights/script.js"></script>
 
-
-<meta property="og:title" content={title}/>
+<meta property="og:title" content={title} />
 <meta property="og:type" content="article" />
 <meta property="og:url" content={url} />
-<meta property="og:image" content={img}/>
+<meta property="og:image" content={img} />
 
-<meta name="description" content={desc}>
+<link
+    rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/zenburn.min.css"
+/>
+<script is:inline
+    src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+></script>
+
+<script is:inline>hljs.highlightAll();</script>
+
+
+<meta name="description" content={desc} />
 <title>{title}</title>
