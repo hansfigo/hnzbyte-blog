@@ -2,6 +2,7 @@
 const { title } = Astro.props;
 const { desc } = Astro.props;
 const { img } = Astro.props;
+const {seoImg } = Astro.props
 
 const url = Astro.request.url;
 console.log(url);
@@ -18,7 +19,7 @@ console.log(url);
 <meta property="og:title" content={title} />
 <meta property="og:type" content="article" />
 <meta property="og:url" content={url} />
-<meta property="og:image" content={img} />
+<meta property="og:image" content={seoImg} />
 
 <link
     rel="stylesheet"

@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import WaifuCard from "../components/WaifuCard.astro";
 import MainHead from "./MainHead.astro";
-const { title, isIndex, desc, img} = Astro.props;
+const { title, isIndex, desc, img, seoImg} = Astro.props;
 ---
 
 <script is:inline>
@@ -72,7 +72,7 @@ const { title, isIndex, desc, img} = Astro.props;
 
 <html id="html" class="bg-base-300" data-theme="" lang="en">
 	<head>
-		<MainHead title={title} desc={desc} img={img} />
+		<MainHead title={title} desc={desc} img={img} seoImg={seoImg} />
 	</head>
 
 	<body class="">

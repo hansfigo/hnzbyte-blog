@@ -25,7 +25,7 @@ const content = renderRichText(blok.content, {
     pre!.style.overflow = "hidden";
 </script>
 
-<MainLayout title={blok.title} desc={blok.description} img={blok.banner.url}>
+<MainLayout title={blok.title} desc={blok.description} img={blok.banner.url} seoImg={blok.seoImg}>
     <article {...storyblokEditable(blok)}>
         <div class="flex-col flex gap-4">
             <a href="/about">
