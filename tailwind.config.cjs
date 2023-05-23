@@ -13,6 +13,9 @@ module.exports = {
 						// 		color: '#2c5282',
 						// 	},
 						// },
+						code:{
+							color : 'hsl(var(--p))'
+						},
 						pre: {
 							'code.hljs': {
 								'overflow-x': 'auto',
