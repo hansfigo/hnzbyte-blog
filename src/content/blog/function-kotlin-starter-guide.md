@@ -12,7 +12,24 @@ image : https://media.giphy.com/media/1O2BRZcDgIfDsKMTbG/giphy.gif
 
 Halo guys. Gimana kabarnya sehat kan ya. Alhamdullilah deh. oh iya jadi aku denger temen-temen masih belum begitu paham ya mengenai function ? nah karena itu di blog ini aku mau bahas function di bahasa kotlin. sama aja sih sama bahasa yang lain jadi kalau kalian ga pakai kotlin mirip-mirip lah syntaxnya. Oke deh klo gitu langsung aja ke hidangan utamanya.
 
-##Apa itu function ?
+## Apa itu function ?
 Simple nya function itu adalah cara penulisan kode, dimana kita hanya perlu menulis 1 blok kode, namun bisa kita pakai berulang kali tanpa nulis ulang. Praktis kan ?? Misal nih kita mau cari volume lingkaran, kita tinggal nulis function buat volume lingkaran 1 kali terus bisa kita panggil berulangkali tanpa harus nulis ulang rumus volume, Jadi Hemat tenaga dan waktu deh.
-
+<br>
 Hmm masi gada gambaran function itu kyk gimana? Simple kok , nih ku kasi contoh, bayangin kamu lagi nulis manual cara bikin nasi goreng. Biasanya, kamu tulis langkah-langkahnya dari awal sampe akhir, kan? Nah, kalo function itu kayak resep siap pakai. Kamu tulis sekali aja cara bikin nasi goreng dalam bentuk function. Terus, setiap kali pengen bikin nasi goreng, tinggal panggil aja tuh functionnya. Nggak perlu nulis lagi langkah-langkahnya setiap kali. Praktis banget kan? Jadi, function tuh kayak resep yang bisa dipanggil berkali-kali tanpa repot nulis ulang.
+<br>
+## Coding Manual vs Function
+Nah tadi udah ku kasih contoh di real life nya sekarang kita masuk ke contoh kodenya. Misal kita mau hitung luas segitiga nih, kalo klean pake cara manual pasti code nya gini
+
+```
+fun main() {
+    //luas segitiga = alas*tinggi/2
+    var luas1 = 12*4/2
+    println(luas1)
+    
+    var luas2 = 10*3/2
+    println(luas2)
+
+    var luas3 = 4*2/2
+    println(luas3)
+}
+```
