@@ -4,9 +4,12 @@ const { frontmatter } = Astro.props;
 const date = frontmatter.publishDate;
 const dateString = date.toString();
 const publishDate = dateString.substring(0, 10);
+
+console.log(frontmatter.description);
+
 ---
 
-<MainLayout title={frontmatter.title}>
+<MainLayout title={frontmatter.title} desc={frontmatter.description} seoImg={frontmatter.seoImg}>
   <div class="flex-col flex gap-4">
     <a href="/about">
       <div class="flex gap-3">

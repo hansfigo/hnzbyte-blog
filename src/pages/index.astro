@@ -1,59 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
-const allBlogPosts = await getCollection("blog");
 import { useStoryblokApi } from "@storyblok/astro";
 import BlogPostList from "../storyblok/BlogPostList.astro";
 
-console.log();
+const allBlogPosts = await getCollection("blog");
 
-// FILTER USER SEARCH
-// const blogQuerry = (await getCollection("blog")).filter((blog) =>
-// 	blog.data.title.toLowerCase().includes("kill me".toLocaleLowerCase().trim())
-// );
 ---
-
-<script>
-	const quotes = document.getElementById("quotes");
-
-	const childElements = quotes!.querySelectorAll(".text-secondary");
-
-	quotes!.addEventListener("mouseover", (event) => {
-		childElements.forEach((child) => {
-			console.log(child);
-			child.classList.remove("text-secondary");
-			child.classList.add("text-accent");
-		});
-	});
-
-	quotes!.addEventListener("mouseout", (event) => {
-		childElements.forEach((child) => {
-			child.classList.remove("text-accent");
-			child.classList.add("text-secondary");
-		});
-	});
-
-	const url = "https://api.api-ninjas.com/v1/quotes?category=humor";
-	const key = "NJGnmVbogrfsmUBmOwyg+w==srEeLsFz8InKCqoB";
-
-	interface quotes {
-		quote: string;
-		author: string;
-	}
-
-	const quotesElement = document.getElementById("quoteText");
-	const authorElement = document.getElementById("author");
-
-	const fetchQuotes: quotes[] = await fetch(url, {
-		method: "GET",
-		headers: {
-			"X-Api-Key": key,
-		},
-	}).then((e) => e.json());
-
-	quotesElement!.innerHTML = fetchQuotes[0].quote;
-	authorElement!.innerHTML = fetchQuotes[0].author;
-</script>
 
 <MainLayout
 	title="Home"
@@ -121,8 +74,49 @@ console.log();
 			<h2 class="text-xl font-semibold text-primary">Recent Blog</h2>
 			<br />
 			<div class="flex flex-wrap gap-4">
-				<BlogPostList />
+				<BlogPostList isCMS="false"/>
 			</div>
 		</section>
 	</article>
 </MainLayout>
+
+<script>
+	const quotes = document.getElementById("quotes");
+
+	const childElements = quotes!.querySelectorAll(".text-secondary");
+
+	quotes!.addEventListener("mouseover", (event) => {
+		childElements.forEach((child) => {
+			child.classList.remove("text-secondary");
+			child.classList.add("text-accent");
+		});
+	});
+
+	quotes!.addEventListener("mouseout", (event) => {
+		childElements.forEach((child) => {
+			child.classList.remove("text-accent");
+			child.classList.add("text-secondary");
+		});
+	});
+
+	const url = "https://api.api-ninjas.com/v1/quotes?category=humor";
+	const key = "NJGnmVbogrfsmUBmOwyg+w==srEeLsFz8InKCqoB";
+
+	interface quotes {
+		quote: string;
+		author: string;
+	}
+
+	const quotesElement = document.getElementById("quoteText");
+	const authorElement = document.getElementById("author");
+
+	const fetchQuotes: quotes[] = await fetch(url, {
+		method: "GET",
+		headers: {
+			"X-Api-Key": key,
+		},
+	}).then((e) => e.json());
+
+	quotesElement!.innerHTML = fetchQuotes[0].quote;
+	authorElement!.innerHTML = fetchQuotes[0].author;
+</script>
