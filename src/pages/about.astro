@@ -1,22 +1,35 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+---
 
----	
-
-<MainLayout title = "About" isIndex={false} img="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg">
+<MainLayout
+	title="About"
+	isIndex={false}
+	img="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
+>
 	<div class="avatar items-center gap-2">
 		<div class="w-60 rounded-full">
-		  <img
-			src="https://live.staticflickr.com/65535/52845885269_492c5c3ec2.jpg"
-			width="455"
-			height="429"
-			alt="Hans Figo blog the blog author avatar"
-		  />
+			<img
+				src="https://pps.whatsapp.net/v/t61.24694-24/354146121_1013455686761107_6039570399266829363_n.jpg?ccb=11-4&oh=01_AdRP9Pk46ebha_dH-kNEcLH4ROl4JUHbcMyeW3p86heOrw&oe=64B03816"
+				width="455"
+				height="429"
+				alt="Hans Figo blog the blog author avatar"
+			/>
 		</div>
-	  </div>
+	</div>
 	<h1 class="text-4xl font-bold">Figo Mager</h1>
-	<h3 class="text-xl text-primary hover:text-primary-focus font-semibold">@hans.figo</h3>
-	<br>
-	<p class="text-xl text-secondary">I'm just newbie developer that love building app using newest tech like this blog example, i build it because i wanna try Astro. Already married with Javascript and Dart. i dont watch anime more, but i'm still update to the lastest anime news. i just dont see any anime that fit my genre anymore. Lets be friend </p>
+	<h3 class="text-xl text-primary hover:text-primary-focus font-semibold">
+		@hans.figo
+	</h3>
+	<br />
+	<p class="text-xl text-secondary">
+		I'm just  <span class="text-primary font-bold">newbie developer </span> that love building app using newest tech like
+		this blog example, i build it because i wanna try Astro. Already married
+		with <span class="text-primary font-bold">Typescript</span>  and <span class="text-primary font-bold">Dart.</span>  i dont watch anime more, but i'm still update
+		to the lastest anime news. i just dont see any anime that fit my genre
+		anymore. Lets be friend
+	</p>
+	<button class="btn btn-primary mt-4"
+		><a href="https://github.com/hansfigo">GitHub</a></button
+	>
 </MainLayout>
-

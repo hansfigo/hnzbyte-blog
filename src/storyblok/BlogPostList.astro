@@ -8,21 +8,29 @@ const { data } = await storyblokAPI.get("cdn/stories", {
     content_type: "blogPost",
 });
 
-const posts = data.stories.map((story: any) => {
-    return {
-        title: story.content.title,
-        date: new Date(story.published_at).toLocaleDateString("en-US", {
-            dateStyle: "full",
-        }),
-        description: story.content.description,
-        slug: story.full_slug,
-        image: story.content.banner.cached_url,
-    };
-});
+// const posts = data.stories.map((story: any) => {
+//     return {
+//         title: story.content.title,
+//         date: new Date(story.published_at).toLocaleDateString("en-US", {
+//             dateStyle: "full",
+//         }),
+//         description: story.content.description,
+//         slug: story.full_slug,
+//         image: story.content.banner.cached_url,
+//     };
+// });
+
+
+
 
 const { isCMS } = Astro.props;
 
 const allBlogPosts = await getCollection("blog");
+
+const posts = await Astro.glob('../content/blog/*.md');
+const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+
+
 ---
 
 <>
@@ -44,20 +52,20 @@ const allBlogPosts = await getCollection("blog");
                       </div>
                   </div>
               ))
-            : allBlogPosts.slice(0).reverse().map((post) => (
+            : nonDraftPosts.slice(0).reverse().map((post) => (
                   <div class="card sm:card-side bg-base-100 shadow-xl">
                       <figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
                           <img
                               class="h-full"
-                              src={post.data.image}
+                              src={post.frontmatter.image}
                               alt="Movie"
                           />
                       </figure>
                       <div class="card-body">
-                          <h2 class="card-title">{post.data.title}</h2>
-                          <p>{post.data.description}</p>
+                          <h2 class="card-title">{post.frontmatter.title}</h2>
+                          <p>{post.frontmatter.description}</p>
                           <div class="card-actions justify-end">
-                              <a href={`/posts/${post.slug}`}>
+                              <a href={`/posts/${post.frontmatter}`}>
                                   <button class="btn btn-primary">Read</button>
                               </a>
                           </div>
