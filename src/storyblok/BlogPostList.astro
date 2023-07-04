@@ -52,20 +52,20 @@ const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
                       </div>
                   </div>
               ))
-            : nonDraftPosts.slice(0).reverse().map((post) => (
+            : allBlogPosts.slice(0).reverse().map((post) => (
                   <div class="card sm:card-side bg-base-100 shadow-xl">
                       <figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
                           <img
                               class="h-full"
-                              src={post.frontmatter.image}
+                              src={post.image}
                               alt="Movie"
                           />
                       </figure>
                       <div class="card-body">
                           <h2 class="card-title">{post.frontmatter.title}</h2>
-                          <p>{post.frontmatter.description}</p>
+                          <p>{post.description}</p>
                           <div class="card-actions justify-end">
-                              <a href={`/posts/${post.frontmatter}`}>
+                              <a href={`/posts/${post.slug}`}>
                                   <button class="btn btn-primary">Read</button>
                               </a>
                           </div>
