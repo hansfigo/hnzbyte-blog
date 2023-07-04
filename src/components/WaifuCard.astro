@@ -1,7 +1,7 @@
 <script>
     import { HtmlTag } from "svelte/internal";
 
-    const url = "https://api.waifu.im/";
+    const url = "https://api.waifu.im/search";
     const fetchImage = await fetch(url).then((e) => e.json());
 
     const img = document.getElementById("anime") as HTMLImageElement;
