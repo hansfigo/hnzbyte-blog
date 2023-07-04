@@ -65,7 +65,7 @@ const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
                           <h2 class="card-title">{post.data.title}</h2>
                           <p>{post.data.description}</p>
                           <div class="card-actions justify-end">
-                              <a href={`/posts/${post.data.slug}`}>
+                              <a href={`/posts/${post.slug}`}>
                                   <button class="btn btn-primary">Read</button>
                               </a>
                           </div>
