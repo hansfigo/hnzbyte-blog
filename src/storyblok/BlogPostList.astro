@@ -57,7 +57,7 @@ const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
                       <figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
                           <img
                               class="h-full"
-                              src={post.image}
+                              src={post.data.image}
                               alt="Movie"
                           />
                       </figure>
