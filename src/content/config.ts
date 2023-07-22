@@ -14,6 +14,7 @@ const blogCollection = defineCollection({
     description: z.string(),
     publishDate: z.date(),
     authorContact: z.string().email(),
+    draft : z.boolean().optional()
   }),
 });
 

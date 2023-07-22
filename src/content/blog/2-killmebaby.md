@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: Kill Me Baby Anime Review – A Hilarious and Light-Hearted Must-Watch!
+title: Kill Me Baby
 description : Looking for a new anime to watch that's both light-hearted and hilarious? Look no further than Kill Me Baby! 
 author  : FigoMager
 publishDate : 2023-04-25

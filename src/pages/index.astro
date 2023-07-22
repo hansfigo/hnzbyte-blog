@@ -1,8 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
-import { useStoryblokApi } from "@storyblok/astro";
-import BlogPostList from "../storyblok/BlogPostList.astro";
+import BlogPostList from "../components/BlogPostList.astro";
 
 const allBlogPosts = await getCollection("blog");
 

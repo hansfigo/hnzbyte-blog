@@ -2,33 +2,18 @@
 import { useStoryblokApi } from "@storyblok/astro";
 import { getCollection } from "astro:content";
 
-const storyblokAPI = useStoryblokApi();
-
-const { data } = await storyblokAPI.get("cdn/stories", {
-    content_type: "blogPost",
-});
-
-// const posts = data.stories.map((story: any) => {
-//     return {
-//         title: story.content.title,
-//         date: new Date(story.published_at).toLocaleDateString("en-US", {
-//             dateStyle: "full",
-//         }),
-//         description: story.content.description,
-//         slug: story.full_slug,
-//         image: story.content.banner.cached_url,
-//     };
-// });
-
-
-
 
 const { isCMS } = Astro.props;
 
 const allBlogPosts = await getCollection("blog");
 
+
+
 const posts = await Astro.glob('../content/blog/*.md');
-const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+
+console.log(allBlogPosts[5].data.draft);
+
+const nonDraftPosts = allBlogPosts.filter((post) => !post.data.draft);
 
 
 ---
@@ -52,7 +37,7 @@ const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
                       </div>
                   </div>
               ))
-            : allBlogPosts.slice(0).reverse().map((post) => (
+            : nonDraftPosts.slice(0).reverse().map((post) => (
                   <div class="card sm:card-side bg-base-100 shadow-xl">
                       <figure class="sm:max-w-[18rem] sm:min-w-[18rem] min-h-44">
                           <img
