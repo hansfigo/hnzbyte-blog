@@ -14,9 +14,6 @@ dependencies:
   '@emotion/css':
     specifier: ^11.10.6
     version: 11.11.2
-  '@storyblok/astro':
-    specifier: ^2.5.12
-    version: 2.5.12
   astro:
     specifier: ^2.3.1
     version: 2.10.15
@@ -973,19 +970,6 @@ packages:
       escalade: 3.1.1
     dev: false
 
-  /@storyblok/astro@2.5.12:
-    resolution: {integrity: sha512-jPb1JbhV6UXSV41ODzxR0fi9m5pms/4g8aySFJsPAOjxdoGWU3I+UdFD0k73/1Mik5rTG9bqE3aoyp5V4XWVHg==}
-    dependencies:
-      '@storyblok/js': 2.3.0
-      camelcase: 8.0.0
-    dev: false
-
-  /@storyblok/js@2.3.0:
-    resolution: {integrity: sha512-xI69Ec0hVtg6Z6asI38UU/Ztag0CYEfFlFY6ti/TcJiaJeOFAvSUnRXwZ4yb86V8jjsNPaWt37oFk7Jr+isy4g==}
-    dependencies:
-      storyblok-js-client: 5.14.4
-    dev: false
-
   /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.5.3)(svelte@3.59.2)(vite@4.5.1):
     resolution: {integrity: sha512-zjiuZ3yydBtwpF3bj0kQNV0YXe+iKE545QGZVTaylW3eAzFr+pJ/cwK8lZEaRp4JtaJXhD5DyWAV4AxLh6DgaQ==}
     engines: {node: ^14.18.0 || >= 16}
@@ -1453,11 +1437,6 @@ packages:
   /camelcase@6.3.0:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
-    dev: false
-
-  /camelcase@8.0.0:
-    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
-    engines: {node: '>=16'}
     dev: false
 
   /camelize@1.0.1:
@@ -3588,10 +3567,6 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       bl: 5.1.0
-    dev: false
-
-  /storyblok-js-client@5.14.4:
-    resolution: {integrity: sha512-9yY33tvfO3Cbe25h/l6K0T3IxJeOOyGl/pCwsd55woT0ZEBhIiEZoMumpRsyLjD5AedW9KXLbLjMXhHazkepCA==}
     dev: false
 
   /string-width@4.2.3:

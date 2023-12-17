@@ -1,6 +1,5 @@
 import svelte from '@astrojs/svelte';
 import tailwind from "@astrojs/tailwind";
-import storyblok from '@storyblok/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 
